@@ -145,19 +145,21 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
-    const productsContainer = document.getElementById( "liked" );
-    productsContainer.innerHTML = "";
+    const likedPostsContainer = document.getElementById( "liked" );
+    likedPostsContainer.innerHTML = "";
     likedPosts.forEach((post) => {
         const div = createPost(post);
-        productsContainer.appendChild(div);
+        likedPostsContainer.appendChild(div);
     });
 };
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
-    posts.forEach((post) => {
+    const reportedPostsContainer = document.getElementById( "reported" );
+    reportedPostsContainer.innerHTML = "";
+    reportedPosts.forEach((post) => {
         const div = createPost(post);
-        document.getElementById( "reported" ).appendChild(div);
+        reportedPostsContainer.appendChild(div);
     });
 };
 
