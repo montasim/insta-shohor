@@ -1,4 +1,4 @@
-let posts=[ ];
+let posts=[];
 
 const likedPostsId = [];
 const reportedPostsId = [];
@@ -16,7 +16,6 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
-  console.log(likedPostsId);
     likedPostsId.push(id); 
     showPosts(posts);
 };
@@ -137,7 +136,7 @@ const createPost = (post) => {
 const showPosts = (posts) => {
     const productsContainer = document.getElementById( "posts" );
     productsContainer.innerHTML = "";
-
+    console.log(posts);
     posts.forEach((post) => {
         const div = createPost(post);
         productsContainer.appendChild(div);
@@ -146,9 +145,11 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
+    const productsContainer = document.getElementById( "liked" );
+    productsContainer.innerHTML = "";
     likedPosts.forEach((post) => {
         const div = createPost(post);
-        document.getElementById( "liked" ).appendChild(div);
+        productsContainer.appendChild(div);
     });
 };
 
@@ -164,7 +165,6 @@ const loadPosts = async () =>{
   let data = await fetch('../data/posts.json');
   posts = await data.json();
   showPosts(posts);
-  console.log(posts);
 }
 
 loadPosts();
